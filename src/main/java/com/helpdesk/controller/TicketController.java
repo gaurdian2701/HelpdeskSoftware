@@ -1,12 +1,5 @@
-package com.brianaubry.helpdesk.controller;
+package com.helpdesk.controller;
 
-import com.brianaubry.helpdesk.model.Status;
-import com.brianaubry.helpdesk.model.Ticket;
-import com.brianaubry.helpdesk.model.Stage;
-import com.brianaubry.helpdesk.model.User;
-import com.brianaubry.helpdesk.repository.StatusRepository;
-import com.brianaubry.helpdesk.repository.TicketRepository;
-import com.brianaubry.helpdesk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import com.helpdesk.model.Stage;
+import com.helpdesk.model.Status;
+import com.helpdesk.model.Ticket;
+import com.helpdesk.model.User;
+import com.helpdesk.repository.StatusRepository;
+import com.helpdesk.repository.TicketRepository;
+import com.helpdesk.service.UserService;
 
 import javax.validation.Valid;
 import java.util.*;

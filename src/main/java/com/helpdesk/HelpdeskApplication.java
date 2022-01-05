@@ -1,4 +1,4 @@
-package com.brianaubry.helpdesk;
+package com.helpdesk;
 
 import org.apache.catalina.startup.Tomcat;
 import org.springframework.boot.SpringApplication;

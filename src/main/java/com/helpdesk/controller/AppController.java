@@ -1,4 +1,4 @@
-package com.brianaubry.helpdesk.controller;
+package com.helpdesk.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

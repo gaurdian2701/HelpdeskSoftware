@@ -1,8 +1,9 @@
-package com.brianaubry.helpdesk.repository;
+package com.helpdesk.repository;
 
-import com.brianaubry.helpdesk.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.helpdesk.model.User;
 
 
 @Repository("userRepository")

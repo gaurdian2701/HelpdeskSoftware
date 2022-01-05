@@ -1,4 +1,4 @@
-package com.brianaubry.helpdesk.configuration;
+package com.helpdesk.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

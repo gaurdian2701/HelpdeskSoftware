@@ -1,9 +1,9 @@
-package com.brianaubry.helpdesk.forms;
-
-import com.brianaubry.helpdesk.model.Status;
-import com.brianaubry.helpdesk.model.Ticket;
+package com.helpdesk.forms;
 
 import javax.validation.constraints.NotNull;
+
+import com.helpdesk.model.Status;
+import com.helpdesk.model.Ticket;
 
 public class AddStatusForm {
 

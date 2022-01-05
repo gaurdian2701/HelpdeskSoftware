@@ -1,9 +1,5 @@
-package com.brianaubry.helpdesk.controller;
+package com.helpdesk.controller;
 
-import com.brianaubry.helpdesk.model.Ticket;
-import com.brianaubry.helpdesk.model.User;
-import com.brianaubry.helpdesk.repository.TicketRepository;
-import com.brianaubry.helpdesk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.helpdesk.model.Ticket;
+import com.helpdesk.model.User;
+import com.helpdesk.repository.TicketRepository;
+import com.helpdesk.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

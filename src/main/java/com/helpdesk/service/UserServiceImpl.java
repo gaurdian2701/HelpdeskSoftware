@@ -1,12 +1,13 @@
-package com.brianaubry.helpdesk.service;
+package com.helpdesk.service;
 
-import com.brianaubry.helpdesk.model.Role;
-import com.brianaubry.helpdesk.model.User;
-import com.brianaubry.helpdesk.repository.RoleRepository;
-import com.brianaubry.helpdesk.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.helpdesk.model.Role;
+import com.helpdesk.model.User;
+import com.helpdesk.repository.RoleRepository;
+import com.helpdesk.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;

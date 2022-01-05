@@ -1,4 +1,4 @@
-package com.brianaubry.helpdesk.model;
+package com.helpdesk.model;
 
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;

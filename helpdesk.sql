@@ -6,6 +6,8 @@
 -- Generation Time: Mar 18, 2019 at 09:27 PM
 -- Server version: 5.7.24-log
 -- PHP Version: 7.2.10
+create database if not exists helpdesk;
+use helpdesk; 
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;

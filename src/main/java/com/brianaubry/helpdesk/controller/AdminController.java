@@ -22,7 +22,10 @@ import java.util.Set;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired
+	@Autowired
+	RoleRepository repo;
+    
+	@Autowired
     private UserService userService;
 
     @Autowired
@@ -87,21 +90,26 @@ public class AdminController {
 
     @RequestMapping(value = "users")
     public String manageUsers(Model model){
-
         List<User> allUsers = userRepository.findAll();
-
         model.addAttribute("allUsers", allUsers);
-
         return "admin/users";
     }
 
-    @PostMapping(value = "users/add-role/{id}")
-    public String addUserRoles(Model model, @PathVariable("id") int id){
-        User user = userRepository.findById(id);
-        Set<Role> userRoles = user.getRoles();
-        userRoles.addAll(Arrays.asList(new Role[] {roleRepository.findById(3)}));
-        userRepository.save(user);
-        return "redirect:/admin/users";
+	/*
+	 * @PostMapping(value = "users/add-role/{id}") public String addUserRoles(Model
+	 * model, @PathVariable("id") int id){ User user = userRepository.findById(id);
+	 * Set<Role> userRoles = user.getRoles(); userRoles.addAll(Arrays.asList(new
+	 * Role[] {roleRepository.findById(3)})); userRepository.save(user); return
+	 * "redirect:/admin/users"; }
+	 */
+    
+    @ModelAttribute
+    public String preLoad(Model model) {
+    	List<Role> roleList = repo.findAll();
+    	model.addAttribute("roleList", roleList);
+    	model.addAttribute("role",new Role());
+    	return "admin/users";
     }
+    
 
 }

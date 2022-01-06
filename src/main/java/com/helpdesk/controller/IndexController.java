@@ -46,19 +46,17 @@ public class IndexController {
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login(Model model){
         model.addAttribute("title", "login");
-//        User adminExists = userService.findUserByEmail("admin@admin.com");
-//
-//        if(adminExists == null){
-//            User admin = new User();
-//            admin.setFirstName("admin");
-//            admin.setLastName("admin");
-//            admin.setEmail("admin@admin.com");
-//            admin.setPassword("admin");
-//            userService.saveUser(admin);
-//        }
-//
-//        System.out.println(adminExists.getPassword());
-
+		
+		/*
+		 * User adminExists = userService.findUserByEmail("admin@admin.com");
+		 * 
+		 * if(adminExists == null){ User admin = new User();
+		 * admin.setFirstName("admin"); admin.setLastName("admin");
+		 * admin.setEmail("admin@admin.com"); admin.setPassword("admin");
+		 * userService.saveUser(admin); }
+		 * 
+		 * System.out.println(adminExists.getPassword());
+		 */
         return "login";
     }
 

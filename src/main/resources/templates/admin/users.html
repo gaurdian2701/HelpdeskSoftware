@@ -19,6 +19,7 @@
                 <th>Email</th>
                 <th>Role</th>
                 <th>Change Role</th>
+                <th>Delete User</th>
             </tr>
             </thead>
             <!--Table head-->
@@ -40,6 +41,9 @@
                     			th:text = "${role.role}">
                     	</option>                                
                     </select>
+                </td>
+                <td>
+                	<a th:href = "@{/admin/deleteUser(id=${user.id})}" class = "btn btn-danger ml-2">Delete</a>
                 </td>
             </tr>
 

@@ -14,6 +14,9 @@ import com.helpdesk.repository.RoleRepository;
 import com.helpdesk.repository.UserRepository;
 import com.helpdesk.service.UserService;
 
+import javassist.bytecode.Descriptor.Iterator;
+
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
@@ -118,6 +121,17 @@ public class AdminController {
     	user = userRepository.findById(id);
     	model.addAttribute("user",user);
         return "user/stats";
+    }
+    
+    @RequestMapping(value="deleteUser", method = RequestMethod.GET)
+    @Transactional
+    public String deleteUser(@RequestParam("id") int id)
+    {
+    	User user = new User();
+    	user = userRepository.findById(id);
+    	userRepository.delete(user);
+    	return "redirect:/admin/users";
+    	
     }
 
 }

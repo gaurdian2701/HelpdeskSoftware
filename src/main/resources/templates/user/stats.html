@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments :: head"></head>
+<body class = "container">
+<nav th:replace="fragments :: navigation"></nav>
+<p>&nbsp;</p>
+<h2> User Details </h2>
+<hr/>
+<div th:object = "${user}">
+<p><b>First Name: </b> <span th:text = "*{firstName}"></span>
+<p><b>Last Name: </b> <span th:text = "*{lastName}"></span>
+<p><b>Username </b> <span th:text = "*{username}"></span>
+<p><b>Email: </b> <span th:text = "*{email}"></span>
+
+</div>
+</body>
+</html>

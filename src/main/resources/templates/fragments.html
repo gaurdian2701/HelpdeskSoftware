@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/"> Dashboard <span class="sr-only">(current)</span></a>
             </li>
             <!--<li class="nav-item">-->
                 <!--<a class="nav-link" href="/">Link</a>-->
@@ -59,7 +59,7 @@
                     <div th:each="role : ${loggedInUser.roles}">
                         <a th:if="${role.role} == 'ADMIN'"  class="dropdown-item" href="/admin/">Admin Panel</a>
                     </div>
-                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" th:href="@{user/account(id=${loggedInUser.getId()})}">Account</a>
                     <a class="dropdown-item" th:href="@{/logout}">Sign Out</a>
                 </div>
             </li>

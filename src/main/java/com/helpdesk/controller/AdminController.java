@@ -115,13 +115,12 @@ public class AdminController {
     	return "admin/users";
     }
     
-    @RequestMapping(value = "account", method = RequestMethod.GET)
-    public String userSettings(Model model, @RequestParam("id") int id){
-    	User user = new User();
-    	user = userRepository.findById(id);
-    	model.addAttribute("user",user);
-        return "user/stats";
-    }
+	/*
+	 * @RequestMapping(value = "account", method = RequestMethod.GET) public String
+	 * userSettings(Model model, @RequestParam("id") int id){ User user = new
+	 * User(); user = userRepository.findById(id); model.addAttribute("user",user);
+	 * return "user/stats"; }
+	 */
     
     @RequestMapping(value="deleteUser", method = RequestMethod.GET)
     @Transactional

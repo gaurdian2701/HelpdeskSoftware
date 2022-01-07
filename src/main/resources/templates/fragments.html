@@ -59,7 +59,7 @@
                     <div th:each="role : ${loggedInUser.roles}">
                         <a th:if="${role.role} == 'ADMIN'"  class="dropdown-item" href="/admin/">Admin Panel</a>
                     </div>
-                    <a class="dropdown-item" th:href="@{user/account(id=${loggedInUser.getId()})}">Account</a>
+                    <a class="dropdown-item" th:href="@{/account(id=${loggedInUser.getId()})}">Account</a>
                     <a class="dropdown-item" th:href="@{/logout}">Sign Out</a>
                 </div>
             </li>

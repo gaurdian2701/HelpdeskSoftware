@@ -39,7 +39,7 @@ CREATE TABLE `persistent_logins` (
 
 -- --------------------------------------------------------
 
---
+--persistent_logins	
 -- Table structure for table `role`
 --
 

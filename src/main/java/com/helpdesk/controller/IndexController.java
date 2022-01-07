@@ -15,6 +15,8 @@ import com.helpdesk.repository.TicketRepository;
 import com.helpdesk.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,7 +24,7 @@ public class IndexController {
 
     @Autowired
     UserService userService;
-
+    
     @Autowired
     TicketRepository ticketRepository;
 
@@ -33,14 +35,22 @@ public class IndexController {
         return loggedInUser;
     }
 
-    @RequestMapping(value = "")
-    public String index(Model model, @ModelAttribute("loggedInUser") User loggedInUser, HttpServletRequest request){
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String index(Model model, @ModelAttribute("loggedInUser") User loggedInUser)
+    {
 
-        List<Ticket> openTickets = ticketRepository.findAll();
-        model.addAttribute("openTickets", openTickets);
-
-
-        return "index";
+    	List<Ticket> openTickets = ticketRepository.findAll();
+    	List<Ticket> chosenTickets = new ArrayList<Ticket>(); 
+    	for(Ticket ticket : openTickets) 
+    	{ 
+    		if((ticket.getCreatedBy().getId()) == loggedInUser.getId()) 
+    		{
+    			chosenTickets.add(ticket); 
+    		} 
+    	}
+    	System.out.println(chosenTickets);
+    	model.addAttribute("chosenTickets", chosenTickets);
+    	return "index";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)

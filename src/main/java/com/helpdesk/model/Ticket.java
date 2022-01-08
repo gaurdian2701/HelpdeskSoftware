@@ -47,7 +47,7 @@ public class Ticket {
     @ManyToOne
     private User assignedTo;
 
-    private Stage stage;
+    public Stage stage;
 
     public Ticket() {
         this.stage = Stage.OPEN;

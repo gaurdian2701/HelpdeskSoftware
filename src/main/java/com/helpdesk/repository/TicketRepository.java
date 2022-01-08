@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.helpdesk.model.Ticket;
 import com.helpdesk.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -16,4 +17,10 @@ import java.util.List;
 public interface TicketRepository extends JpaRepository<Ticket, Integer> {
     Ticket findById(int id);
     List<Ticket> findByAssignedToId(int id);
+    
+    @Query(value = "SELECT stage FROM ticket WHERE created_by_id = :userID", nativeQuery = true)
+    ArrayList<Integer> findStagesGivenId(@Param("userID") int userID);
+    
+    @Query(value = "SELECT id FROM ticket WHERE created_by_id = :userID", nativeQuery = true)
+    ArrayList<Integer> findIdGivenId(@Param("userID") int userID);
 }

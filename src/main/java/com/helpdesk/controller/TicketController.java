@@ -62,20 +62,25 @@ public class TicketController {
         return "ticket/all-tickets";
     }
     
-    @RequestMapping(value = "myTicket")
-    public String myOpenTicket(Model model, @ModelAttribute User loggedInUser){
-    List<Ticket> openTickets = ticketRepository.findAll();
-    List<Ticket> chosenTickets = new ArrayList<Ticket>();
-    
-    for (Ticket ticket : openTickets)
+    @RequestMapping(value = "myTicket", method = RequestMethod.GET)
+    public String myOpenTicket(Model model, @ModelAttribute("loggedInUser") User loggedInUser)
     {
-    		if(ticket.getCreatedBy().getId() == loggedInUser.getId() && ticket.getStage().getName().equalsIgnoreCase("Open"))
+    	List<Ticket> chosenTickets = new ArrayList<Ticket>();
+    	ArrayList<Integer> stages = ticketRepository.findStagesGivenId(loggedInUser.getId());
+    	ArrayList<Integer> IDs = ticketRepository.findIdGivenId(loggedInUser.getId());
+    	for(int i=0;i<stages.size();i++)
+    	{
+    		if(stages.get(i) == 0)
     		{
-    			chosenTickets.add(ticket);
-    		}
-    }
-    model.addAttribute("chosenTickets", chosenTickets);
-    return "ticket/myTicket";
+    			Optional<Ticket> optionalticket1 = ticketRepository.findById(IDs.get(i));
+    			Ticket ticket1 = optionalticket1.get();
+    			chosenTickets.add(ticket1);
+    		}	
+    	}
+    	System.out.println(stages);
+
+    	model.addAttribute("chosenTickets", chosenTickets);
+    	return "ticket/myTicket";
 }
 
     //shows form to create new tickets
@@ -100,6 +105,7 @@ public class TicketController {
         Date currentDate = new Date();
         newTicket.setDateOpened(currentDate);
         newTicket.setCreatedBy(loggedInUser);
+        newTicket.setStage(Stage.OPEN);
         ticketRepository.save(newTicket);
 
         return "redirect:/ticket/" + newTicket.getId();
@@ -167,12 +173,11 @@ public class TicketController {
 
     //enables the ability to reopen tickets when they have been closed
     @PostMapping(value = "{id}/reopen")
-    public String processTicketReopen(Model model,@PathVariable("id") int id, @Valid Ticket ticket, Errors errors){
-        //TODO: test ticket reopening
+    public String processTicketReopen(Model model,@PathVariable("id") int id, @Valid Ticket ticket, Errors errors)
+    {
         Ticket activeTicket = ticketRepository.findById(id);
         activeTicket.setStage(Stage.OPEN);
         activeTicket.setDateClosed(null);
-        ticketRepository.save(activeTicket);
         return "redirect:/ticket/" + id;
     }
 

@@ -9,25 +9,28 @@
             <form class="form-horizontal" method="post" th:action="'/ticket/'+${ticket.id}+'/close'" th:object="${ticket}">
                 <div class="row justify-content-center">
                     <div class="col-md-8 text-right">
+                    	<p>&nbsp</p>
                         <button type="submit" class="btn btn-danger text-right">Close Ticket</button>
+                        <p>&nbsp</p>
                     </div>
                 </div>
             </form>
         </div>
 
-        <div class="container" th:unless="${ticket.stage.name != 'Closed'}">
+       <!--  <div class="container" th:unless="${ticket.stage.name != 'Closed'}">
             <form class="form-horizontal" method="post" th:action="'/ticket/'+${ticket.id}+'/reopen'" th:object="${ticket}">
                 <div class="row justify-content-center">
                     <div class="col-md-8 text-right">
                         <button type="submit" class="btn btn-warning text-right">Re-Open Ticket</button>
                     </div>
                 </div>
-            </form>
-            <div class="row justify-content-center">
+            </form> -->
+           <!--  <div class="row justify-content-center">
                 <div class="col-md-8">
+                	<p>&nbsp</p>
                     <p class="text-right">Ticket closed <span th:text="${#dates.format(ticket.getDateClosed(), 'M/dd/yyyy h:mm a ')}"></span></p>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="container">
@@ -89,13 +92,13 @@
 
         </div>
 
-        <h4 class="offset-md-1">Updates</h4>
+       <!--  <h4 class="offset-md-1">Updates</h4>
 
         <table th:unless="${!statuses.isEmpty()}" class="table col-md-10 offset-1">
             <tr>
                 <td>No Updates</td>
             </tr>
-        </table>
+        </table> -->
 
         <!--<div th:if="${!statuses.isEmpty()}">-->
             <!--<table class="table col-md-10 offset-md-1">-->

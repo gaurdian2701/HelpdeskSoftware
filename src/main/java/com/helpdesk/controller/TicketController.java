@@ -82,6 +82,26 @@ public class TicketController {
     	model.addAttribute("chosenTickets", chosenTickets);
     	return "ticket/myTicket";
 }
+    @RequestMapping(value = "myCTicket", method = RequestMethod.GET)
+    public String myCloseTicket(Model model, @ModelAttribute("loggedInUser") User loggedInUser)
+    {
+    	List<Ticket> chosenTickets = new ArrayList<Ticket>();
+    	ArrayList<Integer> stages = ticketRepository.findStagesGivenId(loggedInUser.getId());
+    	ArrayList<Integer> IDs = ticketRepository.findIdGivenId(loggedInUser.getId());
+    	for(int i=0;i<stages.size();i++)
+    	{
+    		if(stages.get(i) == 5)
+    		{
+    			Optional<Ticket> optionalticket1 = ticketRepository.findById(IDs.get(i));
+    			Ticket ticket1 = optionalticket1.get();
+    			chosenTickets.add(ticket1);
+    		}	
+    	}
+    	System.out.println(stages);
+
+    	model.addAttribute("chosenTickets", chosenTickets);
+    	return "ticket/myCTicket";
+}
 
     //shows form to create new tickets
     @GetMapping(value = "new")

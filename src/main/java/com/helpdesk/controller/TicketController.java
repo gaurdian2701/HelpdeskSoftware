@@ -61,6 +61,22 @@ public class TicketController {
         model.addAttribute("openTickets", openTickets);
         return "ticket/all-tickets";
     }
+    
+    @RequestMapping(value = "myTicket")
+    public String myOpenTicket(Model model, @ModelAttribute User loggedInUser){
+    List<Ticket> openTickets = ticketRepository.findAll();
+    List<Ticket> chosenTickets = new ArrayList<Ticket>();
+    
+    for (Ticket ticket : openTickets)
+    {
+    		if(ticket.getCreatedBy().getId() == loggedInUser.getId() && ticket.getStage().getName().equalsIgnoreCase("Open"))
+    		{
+    			chosenTickets.add(ticket);
+    		}
+    }
+    model.addAttribute("chosenTickets", chosenTickets);
+    return "ticket/myTicket";
+}
 
     //shows form to create new tickets
     @GetMapping(value = "new")

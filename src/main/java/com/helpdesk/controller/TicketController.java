@@ -156,6 +156,7 @@ public class TicketController {
         Ticket activeTicket = ticketRepository.findById(id);
         activeTicket.setStage(Stage.OPEN);
         activeTicket.setDateClosed(null);
+        ticketRepository.save(activeTicket);
         return "redirect:/ticket/" + id;
     }
 

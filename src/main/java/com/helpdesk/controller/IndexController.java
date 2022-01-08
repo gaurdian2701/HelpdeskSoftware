@@ -30,9 +30,10 @@ public class IndexController {
 
     @ModelAttribute("loggedInUser")
     public User populateUserDetails(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User loggedInUser = userService.findUserByEmail(auth.getName());
-        return loggedInUser;
+		
+		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		 User loggedInUser = userService.findUserByEmail(auth.getName()); return
+		 loggedInUser;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -48,7 +49,6 @@ public class IndexController {
     			chosenTickets.add(ticket); 
     		} 
     	}
-    	System.out.println(chosenTickets);
     	model.addAttribute("chosenTickets", chosenTickets);
     	return "index";
     }

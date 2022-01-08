@@ -23,8 +23,8 @@
             <table class="table table-sm table-striped">
                 <thead class="thead-dark">
                     <tr>
-                        <th class="text-center" scope="col">#</th>
-                        <th scope="col">Stage</th>
+                        <th class="text-center" scope="col">ID</th>
+                       <th scope="col">Stage</th>
                         <th scope="col">Updated</th>
                         <th scope="col">Title</th>
                     </tr>
@@ -34,7 +34,7 @@
                             <th class="text-center" scope="row">
                                 <a th:text="${ticket.id}" th:href="@{'/ticket/'+${ticket.id}}"></a>
                             </th>
-                             <td th:text="${ticket.stage.getName()}"></td> 
+                            <td th:text="${ticket.stage.getName()}"></td>
                             <td th:text="${#dates.format(ticket.lastUpdated, 'M/dd/yy h:mm a')}">Not Updated</td>
                             <td th:text="${ticket.title}"></td>
                         </tr>

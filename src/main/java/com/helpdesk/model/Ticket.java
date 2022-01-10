@@ -3,6 +3,7 @@ package com.helpdesk.model;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ticket")
+@Component
 public class Ticket {
 
     @Id

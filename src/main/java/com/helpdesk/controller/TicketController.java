@@ -16,6 +16,7 @@ import com.helpdesk.repository.StatusRepository;
 import com.helpdesk.repository.TicketRepository;
 import com.helpdesk.service.UserService;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.*;
 
@@ -31,6 +32,9 @@ public class TicketController {
 
     @Autowired
     StatusRepository statusRepository;
+    
+    @Autowired
+    Ticket ticket1;
 
     private String id;
 
@@ -126,6 +130,7 @@ public class TicketController {
         newTicket.setDateOpened(currentDate);
         newTicket.setCreatedBy(loggedInUser);
         newTicket.setStage(Stage.OPEN);
+        newTicket.setAssignedTo(loggedInUser);
         ticketRepository.save(newTicket);
 
         return "redirect:/ticket/" + newTicket.getId();
@@ -164,6 +169,18 @@ public class TicketController {
         statusRepository.save(newStatus);
         return "redirect:/ticket/" + id;
     }
+    
+    @RequestMapping(value = "AssignedTo", method = RequestMethod.GET)
+    @Transactional
+    public String processTicketUpdateAssignedTo(@RequestParam(value="id") int id, @ModelAttribute("loggedInUser") User loggedInUser){
+
+        ticket1 = ticketRepository.findById(id);
+        System.out.println("Hi!");
+        ticket1.getAssignedTo().setEmail(loggedInUser.getEmail());
+        ticketRepository.save(ticket1);
+
+        return "redirect:/ticket/" + id;
+    }
 
     //processes the updating of specific information tied to the initial ticket when it was created, i.e. the
     //description or stage
@@ -174,6 +191,7 @@ public class TicketController {
 
         activeTicket.setDescription(ticket.getDescription());
         activeTicket.setStage(ticket.getStage());
+        System.out.println("Hi!");
         ticketRepository.save(activeTicket);
 
         return "redirect:/ticket/" + id;

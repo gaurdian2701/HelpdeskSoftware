@@ -101,8 +101,6 @@ public class TicketController {
     			chosenTickets.add(ticket1);
     		}	
     	}
-    	System.out.println(stages);
-
     	model.addAttribute("chosenTickets", chosenTickets);
     	return "ticket/myCTicket";
 }

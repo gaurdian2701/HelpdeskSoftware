@@ -32,14 +32,13 @@ public class IndexController {
     public User populateUserDetails(Model model) {
 		
 		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		 User loggedInUser = userService.findUserByEmail(auth.getName()); return
-		 loggedInUser;
+		 User loggedInUser = userService.findUserByEmail(auth.getName()); 
+		 return loggedInUser;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model, @ModelAttribute("loggedInUser") User loggedInUser)
     {
-
     	List<Ticket> openTickets = ticketRepository.findAll();
     	List<Ticket> chosenTickets = new ArrayList<Ticket>(); 
     	for(Ticket ticket : openTickets) 

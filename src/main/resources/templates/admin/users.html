@@ -25,7 +25,7 @@
             <!--Table head-->
             <!--Table body-->
             <tbody>
-            <tr th:each="user : ${allUsers}">
+            <tr th:each="user : ${selectedUsers}">
                 <td th:text="${user.id}"></td>
                 <td th:text="${user.firstName} + ' ' + ${user.lastName}"></td>
                 <td th:text="${user.email}"></td>

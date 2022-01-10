@@ -18,6 +18,8 @@ import javassist.bytecode.Descriptor.Iterator;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -50,13 +52,16 @@ public class AdminController {
 
     @RequestMapping(value = "")
     public String adminConsole(Model model, @ModelAttribute User loggedInUser){
-
         List<User> allUsers = userRepository.findAll();
-
-        model.addAttribute("allUsers", allUsers);
-
-        //TODO: create admin console template and commands, change return to admin/admin when done
-        // return "admin/admin";
+        List<User> selectedUsers = new ArrayList<User>();
+        ArrayList<Integer> userRoles;
+        for(User user : allUsers)
+        {
+        	userRoles = userRepository.findRoleGivenId(user.getId());
+        	if(userRoles.size()==1)
+        		selectedUsers.add(user);
+        }
+        model.addAttribute("selectedUsers", selectedUsers);
         return "admin/users";
     }
 

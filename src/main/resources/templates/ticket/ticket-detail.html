@@ -57,7 +57,7 @@
         </div>
 
         <div class="container">
-            <class="form-horizontal" method="post" th:action="'/ticket/'+${ticket.id}+'/update'" th:object="${ticket}">
+            <form class="form-horizontal" method="post" th:action="'/ticket/'+${ticket.id}+'/update'" th:object="${ticket}">
                 <div class="form-group">
                     <div class="row justify-content-center">
                         <label class="col-md-8 control-label" for="ticket-status">Status</label>
@@ -133,7 +133,7 @@
                 
                     
                         <!-- <a th:href = "@{/admin/deleteUser(id=${user.id})}" class = "btn btn-danger ml-2">Delete</a> !-->
-   				<a th:href="@{/ticket/AssignedTo(id=${ticket.id})}" th:object="${ticket}" class="btn btn-success">Update Assigned To</a>                    
+   				<!-- <a th:href="@{/ticket/AssignedTo(id=${ticket.id})}" th:object="${ticket}" class="btn btn-success">Update Assigned To</a>             -->        
                    
                 
     </body>

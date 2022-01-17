@@ -1,6 +1,7 @@
 package com.helpdesk.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -23,4 +24,9 @@ public interface TicketRepository extends JpaRepository<Ticket, Integer> {
     
     @Query(value = "SELECT id FROM ticket WHERE created_by_id = :userID", nativeQuery = true)
     ArrayList<Integer> findIdGivenId(@Param("userID") int userID);
+    
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM ticket WHERE created_by_id = :userID", nativeQuery = true)
+    void deleteUserTicket(@Param("userID") int userID);
 }

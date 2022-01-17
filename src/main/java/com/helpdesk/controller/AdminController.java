@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.helpdesk.model.Role;
 import com.helpdesk.model.User;
 import com.helpdesk.repository.RoleRepository;
+import com.helpdesk.repository.TicketRepository;
 import com.helpdesk.repository.UserRepository;
 import com.helpdesk.service.UserService;
 
@@ -39,6 +40,9 @@ public class AdminController {
 
     @Autowired
     private RoleRepository roleRepository;
+    
+    @Autowired
+    private TicketRepository ticketrepo;
 
 
     @ModelAttribute("loggedInUser")
@@ -134,6 +138,7 @@ public class AdminController {
     	User user = new User();
     	user = userRepository.findById(id);
     	userRepository.delete(user);
+    	ticketrepo.deleteUserTicket(id);
     	return "redirect:/admin/users";
     	
     }

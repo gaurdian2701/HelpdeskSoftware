@@ -6,8 +6,10 @@
 -- Generation Time: Mar 18, 2019 at 09:27 PM
 -- Server version: 5.7.24-log
 -- PHP Version: 7.2.10
+
 create database if not exists helpdesk;
-use helpdesk; 
+use helpdesk;
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,7 +41,7 @@ CREATE TABLE `persistent_logins` (
 
 -- --------------------------------------------------------
 
---persistent_logins	
+--
 -- Table structure for table `role`
 --
 
@@ -96,19 +98,7 @@ CREATE TABLE `ticket` (
   `status` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `ticket`
---
 
-INSERT INTO `ticket` (`id`, `date_closed`, `date_opened`, `description`, `title`, `assigned_to_id`, `created_by_id`, `status`) VALUES
-(1, NULL, '2019-03-12 23:51:03', 'test ticket 1', 'this is a test ticket', NULL, 2, NULL),
-(2, NULL, '2019-03-12 23:56:32', 'test ticket 2', 'this is a second test ticket', NULL, 2, NULL),
-(3, NULL, '2019-03-16 15:33:58', 'third ticket description goes here', 'this is a third ticket', NULL, 2, NULL),
-(4, NULL, '2019-03-16 16:17:42', 'this is a description', 'this is a title that is meant to be way too long', NULL, 2, NULL);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ticket_status`
 --
 
@@ -146,7 +136,6 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `active`, `email`, `firstName`, `lastName`, `password`) VALUES
-(1, 1, 'bdaubry@gmail.com', 'Brian', 'Aubry', '$2a$10$.RUw5S/zyl/HGBd85o6Q/e0hnXsYyAnVzJILHTqPPkDqmlMWLPxJu'),
 (2, 1, 'admin@admin.com', 'admin', 'admin', '$2a$10$fD1BeYqFJntdYpE9.gNVquAAEzJxHNgqczYKGwQcn18Ngvnwt/aUO'),
 (3, 1, 'testuser@test.com', 'testuser', 'testuser', '$2a$10$aUGCFq11bHq/XPr4eN0sG.0z9AlX3c5OdjsMgjPjH5oYJTK2hIsFa');
 

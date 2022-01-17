@@ -18,7 +18,7 @@
                     <th scope="col">Ticket Title</th>
                     <th scope="col">Date Opened</th>
                     <th scope="col">Last Updated</th>
-                    <th scope="col">Assigned To</th>
+                    <!-- <th scope="col">Assigned To</th> -->
                     <th scope="col">Stage</th>
                 </tr>
                 </thead>
@@ -27,8 +27,8 @@
                     <td th:text="${ticket.title}"></td>
                     <td th:text="${#dates.format(ticket.dateOpened, 'M/dd/yy h:mm a')}"></td>
                     <td th:text="${#dates.format(ticket.lastUpdated, 'M/dd/yy h:mm a')}"></td>
-                    <td th:if="${ticket.assignedTo != null}" th:text="${ticket.assignedTo.firstName}+ ' ' +${ticket.assignedTo.lastName}" >Unassigned</td>
-                    <td th:unless="${ticket.assignedTo != null}">Unassigned</td>
+                   <!--  <td th:if="${ticket.assignedTo != null}" th:text="${ticket.assignedTo.firstName}+ ' ' +${ticket.assignedTo.lastName}" >Unassigned</td>
+                    <td th:unless="${ticket.assignedTo != null}">Unassigned</td> -->
                     <td th:text="${ticket.stage}"></td>
                 </tr>
             </table>
